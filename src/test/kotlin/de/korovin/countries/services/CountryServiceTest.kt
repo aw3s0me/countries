@@ -7,9 +7,9 @@ import com.nhaarman.mockito_kotlin.whenever
 import de.korovin.countries.models.Country
 import de.korovin.countries.persistence.CountryRepository
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.runners.MockitoJUnitRunner
 
@@ -21,23 +21,22 @@ class CountryServiceTest {
     @Mock
     lateinit var repository: CountryRepository
 
+    @InjectMocks
     lateinit var service: CountryService
-    val many: MutableList<Country> = mutableListOf()
 
-    @Before
-    fun setUp() {
-        many.add(Country("Country1", "CT1"))
-        many.add(Country("Country2", "CT2"))
-
-        service = CountryService(repository)
-    }
+    val many: Iterable<Country> = listOf(
+            Country("Country1", "CT1"),
+            Country("Country2", "CT2")
+    ).asIterable()
 
     @Test
     fun `should find all countries`() {
         whenever(repository.findAll()).thenReturn(many)
         val res = service.getAll()
 
-        assertThat(res).hasSize(2).contains(many[0], many[1])
+        assertThat(res).hasSize(2).contains(
+                many.elementAt(0),
+                many.elementAt(1))
         verify(repository, times(1)).findAll()
         verifyNoMoreInteractions(repository)
     }

@@ -13,5 +13,4 @@ import javax.persistence.Id
 class Country(var name: String, var shortName: String) {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     var id: Long = 0
-
 }
