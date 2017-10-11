@@ -2,6 +2,8 @@ package de.korovin.countries.persistence;
 
 import de.korovin.countries.models.Country
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.After
+import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
@@ -20,6 +22,16 @@ class CountryRepositoryTest {
 
     @Autowired
     lateinit var repository: CountryRepository
+
+    @Before
+    fun setUp() {
+        repository.deleteAll()
+    }
+
+    @After
+    fun tearDown() {
+        repository.deleteAll()
+    }
 
     @Test
     fun `should return no countries when empty`() {

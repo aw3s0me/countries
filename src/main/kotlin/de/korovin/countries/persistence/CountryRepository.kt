@@ -1,6 +1,7 @@
 package de.korovin.countries.persistence
 
 import de.korovin.countries.models.Country
+import org.springframework.context.annotation.Primary
 import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Repository
 import org.springframework.transaction.annotation.Transactional
@@ -11,5 +12,6 @@ import org.springframework.transaction.annotation.Transactional
  * which accesses them by their short name
  */
 @Repository
+@Primary
 @Transactional
 interface CountryRepository : CrudRepository<Country, Long>
