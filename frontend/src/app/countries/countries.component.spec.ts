@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CountriesComponent } from './countries.component';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 describe('CountriesComponent', () => {
   let component: CountriesComponent;
@@ -8,7 +9,10 @@ describe('CountriesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CountriesComponent ]
+      declarations: [ CountriesComponent ],
+      imports: [
+        NgxDatatableModule
+      ]
     })
     .compileComponents();
   }));
