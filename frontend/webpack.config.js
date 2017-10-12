@@ -85,7 +85,7 @@ module.exports = {
       "./src\\polyfills.ts"
     ],
     "styles": [
-      "./src\\styles.css"
+      "./src\\styles\\styles.css"
     ]
   },
   "output": {
@@ -118,7 +118,7 @@ module.exports = {
       },
       {
         "exclude": [
-          path.join(process.cwd(), "src\\styles.css")
+          path.join(process.cwd(), "src\\styles\\styles.css")
         ],
         "test": /\.css$/,
         "use": [
@@ -141,7 +141,7 @@ module.exports = {
       },
       {
         "exclude": [
-          path.join(process.cwd(), "src\\styles.css")
+          path.join(process.cwd(), "src\\styles\\styles.css")
         ],
         "test": /\.scss$|\.sass$/,
         "use": [
@@ -172,7 +172,7 @@ module.exports = {
       },
       {
         "exclude": [
-          path.join(process.cwd(), "src\\styles.css")
+          path.join(process.cwd(), "src\\styles\\styles.css")
         ],
         "test": /\.less$/,
         "use": [
@@ -201,7 +201,7 @@ module.exports = {
       },
       {
         "exclude": [
-          path.join(process.cwd(), "src\\styles.css")
+          path.join(process.cwd(), "src\\styles\\styles.css")
         ],
         "test": /\.styl$/,
         "use": [
@@ -231,7 +231,7 @@ module.exports = {
       },
       {
         "include": [
-          path.join(process.cwd(), "src\\styles.css")
+          path.join(process.cwd(), "src\\styles\\styles.css")
         ],
         "test": /\.css$/,
         "use": [
@@ -254,7 +254,7 @@ module.exports = {
       },
       {
         "include": [
-          path.join(process.cwd(), "src\\styles.css")
+          path.join(process.cwd(), "src\\styles\\styles.css")
         ],
         "test": /\.scss$|\.sass$/,
         "use": [
@@ -285,7 +285,7 @@ module.exports = {
       },
       {
         "include": [
-          path.join(process.cwd(), "src\\styles.css")
+          path.join(process.cwd(), "src\\styles\\styles.css")
         ],
         "test": /\.less$/,
         "use": [
@@ -314,7 +314,7 @@ module.exports = {
       },
       {
         "include": [
-          path.join(process.cwd(), "src\\styles.css")
+          path.join(process.cwd(), "src\\styles\\styles.css")
         ],
         "test": /\.styl$/,
         "use": [
