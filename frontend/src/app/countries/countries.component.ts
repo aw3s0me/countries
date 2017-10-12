@@ -1,25 +1,26 @@
 import { Component, OnInit } from '@angular/core';
+import { CountryService } from './shared/country.service';
 
 @Component({
   selector: 'app-countries',
   templateUrl: './countries.component.html',
-  styleUrls: ['./countries.component.css']
+  styleUrls: ['./countries.component.css'],
+  providers: [
+    CountryService
+  ]
 })
 export class CountriesComponent implements OnInit {
-  rows = [
-    { id: 1, name: 'Country1', shortName: 'CT1' },
-    { id: 2, name: 'Country2', shortName: 'CT2' },
-    { id: 3, name: 'Country3', shortName: 'CT3' },
-  ];
+  rows = [];
   columns = [
     { name: 'ID' },
     { name: 'Name' },
     { name: 'Short Name' }
   ];
 
-  constructor() { }
+  constructor(private service: CountryService) { }
 
   ngOnInit() {
+    this.service.getAll()
+      .subscribe((data) => this.rows = data);
   }
-
 }

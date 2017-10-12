@@ -9,7 +9,7 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class CountryService {
   // TODO: mv to API_CONFIG
-  private API_URL = 'http://localhost:8080/countries/';
+  private API_URL = 'http://localhost:8080/country/';
   constructor(private http: Http) { }
 
   getAll() {
