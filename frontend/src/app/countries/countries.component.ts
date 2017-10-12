@@ -7,14 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CountriesComponent implements OnInit {
   rows = [
-    { name: 'Austin', gender: 'Male', company: 'Swimlane' },
-    { name: 'Dany', gender: 'Male', company: 'KFC' },
-    { name: 'Molly', gender: 'Female', company: 'Burger King' },
+    { id: 1, name: 'Country1', shortName: 'CT1' },
+    { id: 2, name: 'Country2', shortName: 'CT2' },
+    { id: 3, name: 'Country3', shortName: 'CT3' },
   ];
   columns = [
-    { prop: 'name' },
-    { name: 'Gender' },
-    { name: 'Company' }
+    { name: 'ID' },
+    { name: 'Name' },
+    { name: 'Short Name' }
   ];
 
   constructor() { }
