@@ -10,7 +10,6 @@ import { Country } from './country';
 describe('CountryService', () => {
   let backend: MockBackend;
   let service: CountryService;
-  const API = 'countries';
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -27,7 +26,7 @@ describe('CountryService', () => {
   }));
 
   it('should return the list of countries from the backend on success', () => {
-    MockService.initConnection(this.API, backend, {
+    MockService.initConnection(service['API_URL'], backend, {
       status: 200,
       body: [
         {
@@ -51,6 +50,22 @@ describe('CountryService', () => {
       expect(data[1].name).toEqual('Country2');
       expect(data[0].shortName).toEqual('CT1');
       expect(data[1].shortName).toEqual('CT2');
+    });
+  });
+
+  it('should return text data when calling fetchCSV method', () => {
+    const msgBody = 'text';
+    MockService.initConnection(service['API_URL'] +
+      service['CSV_POSTFIX_URL'],
+      backend, {
+      status: 200,
+      body: msgBody
+    });
+
+    service.getAllCSV().subscribe(data => {
+      console.log(data);
+      expect(data.ok).toBe(true);
+      expect(data.text()).toEqual(msgBody);
     });
   });
 });
