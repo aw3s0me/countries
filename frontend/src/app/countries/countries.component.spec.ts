@@ -6,6 +6,7 @@ import { MockService } from '../shared/mock.service';
 import { CountryService } from './shared/country.service';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
+import * as FileSaver from 'file-saver';
 
 describe('CountriesComponent', () => {
   let component: CountriesComponent;
@@ -70,12 +71,12 @@ describe('CountriesComponent', () => {
 
   it('should get csv when call handler', async(() => {
     fixture.whenStable().then(() => {
-      spyOn(window, 'open');
+      spyOn(FileSaver, 'saveAs');
       spyOn(service, 'getAllCSV').and.returnValue(
         Observable.of('text')
       );
       component.onCSVFetchButtonClick();
-      expect(window.open).toHaveBeenCalled();
+      expect(FileSaver.saveAs).toHaveBeenCalled();
     });
   }));
 });

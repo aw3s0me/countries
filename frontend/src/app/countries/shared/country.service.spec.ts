@@ -63,9 +63,7 @@ describe('CountryService', () => {
     });
 
     service.getAllCSV().subscribe(data => {
-      console.log(data);
-      expect(data.ok).toBe(true);
-      expect(data.text()).toEqual(msgBody);
+      expect(data).toEqual(msgBody);
     });
   });
 });

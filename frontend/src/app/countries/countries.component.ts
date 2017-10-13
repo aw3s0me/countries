@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CountryService } from './shared/country.service';
+import * as FileSaver from 'file-saver';
 
 @Component({
   selector: 'app-countries',
@@ -16,6 +17,7 @@ export class CountriesComponent implements OnInit {
     { name: 'Name' },
     { name: 'Short Name' }
   ];
+  CSV_FILENAME = 'countries.csv';
 
   constructor(private service: CountryService) { }
 
@@ -25,10 +27,9 @@ export class CountriesComponent implements OnInit {
   }
 
   onCSVFetchButtonClick() {
-    this.service.getAllCSV().subscribe((response) => {
-        const blob = new Blob([response], { type: 'text/csv' });
-        const url = window.URL.createObjectURL(blob);
-        window.open(url);
+    this.service.getAllCSV().subscribe((csv) => {
+        const blob = new Blob([csv], { type: 'text/csv' });
+        FileSaver.saveAs(blob, this.CSV_FILENAME)
       });
   }
 }

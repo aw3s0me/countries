@@ -19,6 +19,7 @@ export class CountryService {
   }
 
   getAllCSV() {
-    return this.http.get(this.API_URL + this.CSV_POSTFIX_URL);
+    return this.http.get(this.API_URL + this.CSV_POSTFIX_URL)
+      .map(resp => resp.text());
   }
 }
