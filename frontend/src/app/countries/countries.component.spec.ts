@@ -68,4 +68,14 @@ describe('CountriesComponent', () => {
     });
   }));
 
+  it('should get csv when call handler', async(() => {
+    fixture.whenStable().then(() => {
+      spyOn(window, 'open');
+      spyOn(service, 'getAllCSV').and.returnValue(
+        Observable.of('text')
+      );
+      component.onCSVFetchButtonClick();
+      expect(window.open).toHaveBeenCalled();
+    });
+  }));
 });
