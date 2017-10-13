@@ -6,6 +6,7 @@ import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.verifyNoMoreInteractions
 import com.nhaarman.mockito_kotlin.whenever
 import de.korovin.countries.models.Country
+import de.korovin.countries.services.CSVService
 import de.korovin.countries.services.CountryService
 import org.junit.Before
 import org.junit.Test
@@ -34,6 +35,9 @@ class CountryControllerTest {
 
     @Mock
     lateinit var service: CountryService
+
+    @Mock
+    lateinit var csvService: CSVService
 
     @InjectMocks
     lateinit var controller: CountryController
@@ -76,5 +80,20 @@ class CountryControllerTest {
                 .andExpect(jsonPath("$", hasSize(0)))
         verify(service, times(1)).getAll()
         verifyNoMoreInteractions(service)
+    }
+
+    @Test
+    fun `should return ok csv string when service returns not empty list`() {
+        val mutableList = many.toMutableList()
+
+        whenever(service.getAll()).thenReturn(many)
+        whenever(csvService.convertList(mutableList)).thenReturn("testString")
+        mockMvc.perform(get(API + "csv"))
+                .andExpect(status().isOk)
+                .andExpect(content().contentType(MediaType("text", "csv")))
+        verify(service, times(1)).getAll()
+        verify(csvService, times(1)).convertList(mutableList)
+        verifyNoMoreInteractions(service)
+        verifyNoMoreInteractions(csvService)
     }
 }

@@ -51,6 +51,9 @@ dependencies {
     runtime "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
     runtime "com.fasterxml.jackson.module:jackson-module-kotlin"
 
+    // CSV
+    compile group: 'com.opencsv', name: 'opencsv', version: '4.0'
+
     // TESTING
     testCompile group: "junit", name: "junit", version: "4.12"
     // https://mvnrepository.com/artifact/org.mockito/mockito-core
