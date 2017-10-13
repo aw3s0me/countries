@@ -23,4 +23,12 @@ export class CountriesComponent implements OnInit {
     this.service.getAll()
       .subscribe((data) => this.rows = data);
   }
+
+  onCSVFetchButtonClick() {
+    this.service.getAllCSV().subscribe((response) => {
+        const blob = new Blob([response], { type: 'text/csv' });
+        const url = window.URL.createObjectURL(blob);
+        window.open(url);
+      });
+  }
 }

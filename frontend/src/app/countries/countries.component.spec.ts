@@ -58,4 +58,14 @@ describe('CountriesComponent', () => {
       done();
     })
   });
+
+  it('should call handler when csv get button pressed', async(() => {
+    spyOn(component, 'onCSVFetchButtonClick');
+    let button = fixture.debugElement.nativeElement.querySelector('button');
+    button.click();
+    fixture.whenStable().then(() => {
+      expect(component.onCSVFetchButtonClick).toHaveBeenCalled();
+    });
+  }));
+
 });
