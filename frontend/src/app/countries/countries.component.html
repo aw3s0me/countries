@@ -1,5 +1,13 @@
 <div>
-  <button (click)="onCSVFetchButtonClick()">Download list as CSV</button>
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-3">List of countries</h1>
+      <p class="lead">This page contains the list of countries with their short names.</p>
+      <div class="container">
+        <button (click)="onCSVFetchButtonClick()">Download list as CSV</button>
+      </div>
+    </div>
+  </div>
   <ngx-datatable
     class="material"
     [rows]="rows"
