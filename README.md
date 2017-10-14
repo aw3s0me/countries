@@ -39,5 +39,5 @@ This uses npm and ng utils to run angular 4 app
 2. Go to frontend folder
 3. Install angular-cli and tsc (typescript) (latest) globally to enable ng util
 4. run `npm install` to install dependencies
-5. Run `ng serve` to run angular 4 app
+5. Run `npm start run` to run angular 4 app
 6. Go to localhost:4200
